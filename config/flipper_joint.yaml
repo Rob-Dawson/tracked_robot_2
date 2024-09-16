@@ -1,0 +1,86 @@
+# controller_manager:
+#   ros__parameters:
+#     update_rate: 10  # Hz
+
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+
+#     forward_position_controller:
+#       type: forward_command_controller/ForwardCommandController
+
+# forward_position_controller:
+#   ros__parameters:
+#     joints:
+#       - front_right_flipper_joint
+#       - front_left_flipper_joint
+#       - rear_right_flipper_joint
+#       - rear_left_flipper_joint
+#     interface_name: position
+
+
+# controller_manager:
+#   ros__parameters:
+#     update_rate: 10  # Hz
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+    
+#     joint_trajectory_controller:
+#       type: "joint_trajectory_controller/JointTrajectoryController"
+
+# controller_manager:
+#   ros__parameters:
+#     update_rate: 10  # Hz
+
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+
+#     forward_position_controller:
+#       type: forward_command_controller/ForwardCommandController
+
+# forward_position_controller:
+#   ros__parameters:
+#     joints:
+#       - front_right_flipper_joint
+#       - front_left_flipper_joint
+#       - rear_right_flipper_joint
+#       - rear_left_flipper_joint
+#     interface_name: position
+
+
+controller_manager:
+  ros__parameters:
+    update_rate: 10  # Hz
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    
+    joint_trajectory_controller:
+      type: "joint_trajectory_controller/JointTrajectoryController"
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - left_flipper_joint
+      - right_flipper_joint
+      - rear_left_flipper_joint
+      - rear_right_flipper_joint
+
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+
+    allow_partial_joints_goal: true
+    open_loop_control: true
+    constraints:
+      stopped_velocity_tolerance: 0.0
+      goal_time: 300.0
+      max_effort: 0.01
+    gains:
+      left_flipper_joint: {p: 1.0, i: 0.0, d: 0.0}
+      right_flipper_joint: {p: 1.0, i: 0.0, d: 0.0}
+      rear_left_flipper_joint: {p: 1.0, i: 0.0, d: 0.0}
+      rear_right_flipper_joint: {p: 1.0, i: 0.0, d: 0.0}
