@@ -10,3 +10,40 @@ go1_description
 
 # Built Visual Studio Code Extensions
 *.vsix
+description/robot_core copy.xacro
+description/robot.urdf
+description/meshes/a/left_flipper_link.STL
+description/meshes/a/left_track_link.STL
+description/meshes/old/chassis_link.STL
+description/meshes/old/left_flipper_link.STL
+description/meshes/old/left_track_link.STL
+description/meshes/old/rear_left_flipper_link.STL
+description/meshes/old/rear_left_track_link.STL
+description/meshes/old/rear_right_flipper_link.STL
+description/meshes/old/rear_right_track_link.STL
+description/meshes/old/right_flipper_link.STL
+description/meshes/old/right_track_link.STL
+description/meshes/old 3/left_flipper_link.STL
+description/meshes/old 3/left_track_link.STL
+description/meshes/old 4/chassis_link.STL
+description/meshes/old 4/left_flipper_link.STL
+description/meshes/old 4/left_track_link.STL
+description/meshes/old 4/rear_left_flipper_link.STL
+description/meshes/old 4/rear_left_track_link.STL
+description/meshes/old 4/rear_right_flipper_link.STL
+description/meshes/old 4/rear_right_track_link.STL
+description/meshes/old 4/right_flipper_link.STL
+description/meshes/old 4/right_track_link.STL
+description/meshes/old2/chassis_link.STL
+description/meshes/old2/left_flipper_link.STL
+description/meshes/old2/left_track_link.STL
+description/meshes/old2/rear_left_flipper_link.STL
+description/meshes/old2/rear_left_track_link.STL
+description/meshes/old2/rear_right_flipper_link.STL
+description/meshes/old2/rear_right_track_link.STL
+description/meshes/old2/right_flipper_link.STL
+description/meshes/old2/right_track_link.STL
+src/robot_controller/hello_world.cc
+src/robot_controller/robot_controller.cpp
+src/robot_controller/TrackedVehiclePlugin.cpp
+src/gazebo_ros_tracked_vehicle_interface.cpp
