@@ -47,3 +47,6 @@ src/robot_controller/hello_world.cc
 src/robot_controller/robot_controller.cpp
 src/robot_controller/TrackedVehiclePlugin.cpp
 src/gazebo_ros_tracked_vehicle_interface.cpp
+include/gazebo_ros_tracked_vehicle_interface.hpp
+include/robot_controller.hpp
+include/TrackedVehiclePlugin.hpp
