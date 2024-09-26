@@ -395,7 +395,8 @@ Stephen Brawner (brawner@gmail.com)
 
 
 	<gazebo>
-		<plugin filename='libgazebo_track_interface.so' name='tracked_vehicle_interface'>
+<!-- This needs changing to be an environment variable instead of using an absolute path-->
+		<plugin filename='/home/rob/ros_tut_ws/install/gazebo_ros2_tracked_vehicle_interface/share/gazebo_ros2_tracked_vehicle_interface/libgazebo_track_interface.so' name='tracked_vehicle_interface'>
 			<commandROSTopic>/cmd_vel</commandROSTopic>
 			<commandIGNTopic>~/tracked_robot_2/cmd_vel_twist</commandIGNTopic>
 			<robotBaseFrame>base_link</robotBaseFrame>
