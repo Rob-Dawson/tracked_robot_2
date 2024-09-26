@@ -15,6 +15,9 @@ find_package(Boost REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+#Custom package for using ROS2 with tracked robots
+# find_package(gazebo_ros2_tracked_vehicle_interface)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
 
@@ -27,21 +30,23 @@ endif()
 ament_python_install_package(${PROJECT_NAME})
 
 
-add_library(gazebo_track_interface SHARED src/gazebo_ros_tracked_vehicle_interface.cpp)
+# add_library(gazebo_track_interface SHARED src/gazebo_ros_tracked_vehicle_interface.cpp)
 
-target_include_directories(gazebo_track_interface PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include>)
+# include_directories()
 
-ament_target_dependencies(gazebo_track_interface
-"rclcpp"
-"gazebo_ros"
-"nav_msgs"
-"tf2_ros"
-)
+# target_include_directories(gazebo_track_interface PUBLIC
+#   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#   $<INSTALL_INTERFACE:include>)
 
-install(TARGETS gazebo_track_interface
-  DESTINATION share/${PROJECT_NAME})
+# ament_target_dependencies(gazebo_track_interface
+# "rclcpp"
+# "gazebo_ros"
+# "nav_msgs"
+# "tf2_ros"
+# )
+
+# install(TARGETS gazebo_track_interface
+#   DESTINATION share/${PROJECT_NAME})
 
   # Install header files
 install(DIRECTORY include/
