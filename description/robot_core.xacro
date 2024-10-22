@@ -7,11 +7,11 @@ Stephen Brawner (brawner@gmail.com)
 
 	<xacro:include filename="inertial_macros.xacro" />
 
-	<xacro:property name="mass" value="15"> </xacro:property>
-    <xacro:property name="base_mass" value="15" />
-    <xacro:property name="track_mass" value="10" />
-    <xacro:property name="flipper_mass" value="2.5" />
-    <xacro:property name="flipper_length" value="0.139577" />
+	<xacro:property name="mass" value="1.5"> </xacro:property>
+    <xacro:property name="base_mass" value="1.50" />
+    <xacro:property name="track_mass" value="0." />
+    <xacro:property name="flipper_mass" value="0.375" />
+    <xacro:property name="flipper_length" value="0.025" />
 
 	<!-- BASE LINK -->
 	<link name="base_link">
@@ -26,12 +26,18 @@ Stephen Brawner (brawner@gmail.com)
 
 	<!-- CHASSIS LINK -->
 	<link name="chassis_link">
-
-		<!-- <xacro:inertial_box mass="${mass}" x="0.25932" y="0.153" z="0.05932">
+<!-- 
+		<xacro:inertial_box mass="${mass}" x="0.25932" y="0.153" z="0.05932">
 			<origin xyz="1.5315E-06 -1.1582E-06 0.024757" rpy="0 0 0" />
 		</xacro:inertial_box> -->
 
-        <inertial>
+		<xacro:inertial_box mass="${mass}" x="0.25932" y="0.153" z="0.05932">
+			<origin xyz="0 0 0.024757" rpy="0 0 0" />
+		</xacro:inertial_box>
+
+
+
+        <!-- <inertial>
 			<origin xyz="0 0 0.024757" rpy="0 0 0" />
 			<mass
 			value="15.0" />
@@ -42,7 +48,7 @@ Stephen Brawner (brawner@gmail.com)
 			iyy="5"
 			iyz="0"
 			izz="5" />
-        </inertial>
+        </inertial> -->
 
 		<visual>
 
@@ -73,11 +79,11 @@ Stephen Brawner (brawner@gmail.com)
 
 	<link name="imu_link">
 
-		<!-- <xacro:inertial_box mass="${mass}" x="0.25932" y="0.153" z="0.05932">
+		<xacro:inertial_box mass="${mass}" x="0.25932" y="0.153" z="0.05932">
 			<origin xyz="1.5315E-06 -1.1582E-06 0.024757" rpy="0 0 0" />
-		</xacro:inertial_box> -->
+		</xacro:inertial_box>
 
-        <inertial>
+        <!-- <inertial>
 			<origin xyz="0 0 0.024757" rpy="0 0 0" />
 			<mass
 			value="15.0" />
@@ -88,7 +94,7 @@ Stephen Brawner (brawner@gmail.com)
 			iyy="5"
 			iyz="0"
 			izz="5" />
-        </inertial>
+        </inertial> -->
 
 		<visual>
 
@@ -143,12 +149,12 @@ Stephen Brawner (brawner@gmail.com)
 	</joint>
 	<!-- LEFT FLIPPER LINK -->
 	<link name="left_flipper_link">
-<!-- 
+
 		<xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
 			<origin xyz="0.033943 0.00023886 0.011429" rpy="0 0 0" />
-		</xacro:inertial_box> -->
+		</xacro:inertial_box>
 
-        <inertial>
+        <!-- <inertial>
             <origin xyz="0.034059 0.0 -0.0" rpy="0 0 0" />
             <mass
         value="5" />
@@ -159,7 +165,7 @@ Stephen Brawner (brawner@gmail.com)
 		iyy="5"
 		iyz="0"
 		izz="5" />
-        </inertial>
+        </inertial> -->
 
 		<visual>
 
@@ -185,7 +191,7 @@ Stephen Brawner (brawner@gmail.com)
 		<parent link="base_link" />
 		<child link="left_flipper_link" />
 		<axis xyz="0 0 1" />
-		<limit lower="-3" upper="3" effort="0.5" velocity="1.0" />
+		<limit lower="-3" upper="3" effort="1.96" velocity="1.0" />
 	</joint>
 
 	<gazebo reference="left_flipper_link">
@@ -200,11 +206,11 @@ Stephen Brawner (brawner@gmail.com)
 	<!-- LEFT FLIPPER LINK -->
 	<link name="right_flipper_link">
 
-		<!-- <xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
+		<xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
 			<origin xyz="0.034069 7.9651E-05 -0.00043099" rpy="0 0 0" />
-		</xacro:inertial_box> -->
+		</xacro:inertial_box>
 
-        <inertial>
+        <!-- <inertial>
             <origin xyz="0.034069 0 -0.0" rpy="0 0 0" />
             <mass
         value="5" />
@@ -215,7 +221,7 @@ Stephen Brawner (brawner@gmail.com)
 		iyy="5"
 		iyz="0"
 		izz="5" />
-        </inertial>
+        </inertial> -->
 
 		<visual>
 
@@ -241,7 +247,7 @@ Stephen Brawner (brawner@gmail.com)
 		<parent link="base_link" />
 		<child link="right_flipper_link" />
 		<axis xyz="0 0 1" />
-		<limit lower="-3" upper="3" effort="0.5" velocity="1.0" />
+		<limit lower="-3" upper="3" effort="1.96" velocity="1.0" />
 	</joint>
 
 	<gazebo reference="right_flipper_link">
@@ -257,12 +263,12 @@ Stephen Brawner (brawner@gmail.com)
 	<!-- LEFT FLIPPER LINK -->
 	<link name="rear_left_flipper_link">
 
-		<!-- <xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
+		<xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
 
 			<origin xyz="-0.033863 -3.5938E-05 -0.00043099" rpy="0 0 0" />
-		</xacro:inertial_box> -->
+		</xacro:inertial_box>
 
-        <inertial>
+        <!-- <inertial>
             <origin xyz="-0.033863 0 0" rpy="0 0 0" />
             <mass
         value="5" />
@@ -273,7 +279,7 @@ Stephen Brawner (brawner@gmail.com)
 		iyy="5"
 		iyz="0"
 		izz="5" />
-        </inertial>
+        </inertial> -->
 
 		<visual>
 
@@ -299,7 +305,7 @@ Stephen Brawner (brawner@gmail.com)
 		<parent link="base_link" />
 		<child link="rear_left_flipper_link" />
 		<axis xyz="0 0 1" />
-		<limit lower="-3" upper="3" effort="0.5" velocity="1.0" />
+		<limit lower="-3" upper="3" effort="1.96" velocity="1.0" />
 	</joint>
 
 	<gazebo reference="rear_left_flipper_link">
@@ -314,12 +320,12 @@ Stephen Brawner (brawner@gmail.com)
 		<!-- LEFT FLIPPER LINK -->
 		<link name="rear_right_flipper_link">
 
-			<!-- <xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
+			<xacro:inertial_box mass="${flipper_mass}" x="0.139577" y="0.045" z="0.06958">
 
 			<origin xyz="0.033863 7.9651E-05 -0.00043099" rpy="0 0 0" />
 			</xacro:inertial_box>
-	 -->
-	 <inertial>
+	
+	 <!-- <inertial>
 		<origin xyz="-0.034063 -0.0 -0.0" rpy="0 0 0" />
 		<mass
         value="5" />
@@ -330,7 +336,7 @@ Stephen Brawner (brawner@gmail.com)
 		iyy="5"
 		iyz="0"
 		izz="5" />
-	</inertial>
+	</inertial> -->
 			<visual>
 	
 				<origin xyz="0 0 0" rpy="0 0 0" />
@@ -355,7 +361,7 @@ Stephen Brawner (brawner@gmail.com)
 			<parent link="base_link" />
 			<child link="rear_right_flipper_link" />
 			<axis xyz="0 0 1" />
-			<limit lower="-3" upper="3" effort="0.5" velocity="1.0" />
+			<limit lower="-3" upper="3" effort="1.96" velocity="1.0" />
 		</joint>
 	
 		<gazebo reference="rear_right_flipper_link">
@@ -399,8 +405,13 @@ Stephen Brawner (brawner@gmail.com)
 		<plugin filename='/home/rob/ros_tut_ws/install/gazebo_ros2_tracked_vehicle_interface/share/gazebo_ros2_tracked_vehicle_interface/libgazebo_track_interface.so' name='tracked_vehicle_interface'>
 			<commandROSTopic>/cmd_vel</commandROSTopic>
 			<commandIGNTopic>~/tracked_robot_2/cmd_vel_twist</commandIGNTopic>
-			<robotBaseFrame>base_link</robotBaseFrame>
+			<odometryTopic>odom</odometryTopic> <!-- ROS topic for the odometry data - remap if you're using another odom source -->
+
+			<robotBaseFrame>chassis_link</robotBaseFrame>
 			<tracks_separation>0.571</tracks_separation>
+			<publishOdomTF>true</publishOdomTF>
+			<odometrySource>encoder</odometrySource> <!-- [encoder,world] - choose world for ground truth -->
+			<trackSpeedTopic>~/tracked_robot_2/tracks_speed</trackSpeedTopic>
 		</plugin>
 	</gazebo>
 
@@ -419,8 +430,8 @@ Stephen Brawner (brawner@gmail.com)
 	
 			<track_mu>2</track_mu>
 			<track_mu2>0.5</track_mu2>
-			<max_angular_speed>0.1</max_angular_speed>
-			<max_linear_speed>0.1</max_linear_speed>
+			<max_angular_speed>1.0</max_angular_speed>
+			<max_linear_speed>1.0</max_linear_speed>
 
 		</plugin>
 	</gazebo>
@@ -444,23 +455,103 @@ Stephen Brawner (brawner@gmail.com)
 		</plugin>
 	</gazebo>
 
-	    <!-- <ros2_control name="GazeboSystem" type="system">
+	<!-- <gazebo>
+		<plugin name="rotational_joint_control" filename="libgazebo_ros2_control.so">
+			<joint_name>left_flipper_joint</joint_name>
+		</plugin>
+	</gazebo> -->
+	
+	<ros2_control name="GazeboSystem" type="system">
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
         </hardware>
-    <joint name="left_flipper_joint">
-        <command_interface name="position">
+    	
+		<joint name="left_flipper_joint">
+			<param name="pos_kp">10.0001</param>
+			<param name="pos_ki">1.01</param>
+			<param name="pos_kd">1.01</param>
+			<param name="pos_max_integral_error">0.1</param>
+			<command_interface name="position_pid"> 
+				<param name="min">-3.0</param>
+				<param name="max">3.0</param>
+				</command_interface>			
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+			
+      	</joint>
 
-        </command_interface>
-        <state_interface name="position"/>
-        <state_interface name="velocity"/>
-      </joint>
+		  <joint name="right_flipper_joint">
+			<param name="pos_kp">10.0001</param>
+			<param name="pos_ki">1.01</param>
+			<param name="pos_kd">1.01</param>
+			<param name="pos_max_integral_error">0.1</param>
+			<command_interface name="position_pid"> 
+				<param name="min">-3.0</param>
+				<param name="max">3.0</param>
+				</command_interface>			
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+			
+      	</joint>
 
+		  <joint name="rear_left_flipper_joint">
+			<param name="pos_kp">10.0001</param>
+			<param name="pos_ki">1.01</param>
+			<param name="pos_kd">1.01</param>
+			<param name="pos_max_integral_error">0.1</param>
+			<command_interface name="position_pid"> 
+				<param name="min">-3.0</param>
+				<param name="max">3.0</param>
+				</command_interface>			
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+			
+      	</joint>
+
+		  <joint name="rear_right_flipper_joint">
+			<param name="pos_kp">10.0001</param>
+			<param name="pos_ki">1.01</param>
+			<param name="pos_kd">1.01</param>
+			<param name="pos_max_integral_error">0.1</param>
+			<command_interface name="position_pid"> 
+				<param name="min">-3.0</param>
+				<param name="max">3.0</param>
+				</command_interface>			
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+			
+      	</joint>
+	</ros2_control> 
+
+
+
+
+
+
+
+
+	<!-- <transmission name="transmission_1">
+		<type>transmission_interface/SimpleTransmission</type>
+				<actuator name="motor_1" role="actuator1"/>
+		<joint name="left_flipper_joint"    role="joint1">
+			<hardwareInterface>PositionJointInterface</hardwareInterface>
+
+			<mechanical_reduction>1.0</mechanical_reduction>
+		</joint>
+	</transmission> -->
+<!-- 
       <joint name="right_flipper_joint">
         <command_interface name="position">
 
         </command_interface>
         <state_interface name="position"/>
+        <state_interface name="effort"/>
+        <state_interface name="velocity"/>
+
       </joint>
 
       <joint name="rear_left_flipper_joint">
@@ -468,21 +559,27 @@ Stephen Brawner (brawner@gmail.com)
 
         </command_interface>
         <state_interface name="position"/>
-      </joint>
+        <state_interface name="effort"/>
+        <state_interface name="velocity"/>      
+	</joint>
 
       <joint name="rear_right_flipper_joint">
         <command_interface name="position">
 
         </command_interface>
         <state_interface name="position"/>
-      </joint>
+        <state_interface name="effort"/>
+        <state_interface name="velocity"/>      
+	</joint>
 
     </ros2_control>
+-->
 
     <gazebo>
-        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">     
+			<!-- <robot_param>robot_description</robot_param>
+			<robot_param_node>robot_state_publisher</robot_param_node> -->
             <parameters>$(find tracked_robot_2)/config/flipper_joint.yaml</parameters>
         </plugin>   
-    </gazebo> -->
-
+    </gazebo> 
 </robot>
