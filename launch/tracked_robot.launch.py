@@ -29,7 +29,7 @@ def generate_launch_description():
 
     ## Path to Gazebo World
     try:
-        GAZEBO_WORLD = os.path.join(PKG_PATH, "worlds", "empty1.world")
+        GAZEBO_WORLD = os.path.join(PKG_PATH, "worlds", "empty.world")
     except:
         print("Cannot find world")
 
@@ -54,7 +54,8 @@ def generate_launch_description():
             'world': GAZEBO_WORLD}.items()
     )
 
-
+    # max_vel_arg = DeclareLaunchArgument("max_vel", default_value=1.0)
+    # max_vel = LaunchConfiguration("max_vel")
 #endregion
 
 #region Nodes
@@ -66,25 +67,62 @@ def generate_launch_description():
         output="screen"
     )
 #endregion
-    # joint_state_broadcaster_spawner = Node(
+
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+    )
+    flipper_controller1 = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["flipper_controller1", "--controller-manager", "/controller_manager"],
+    )
+
+    flipper_controller2 = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["flipper_controller2", "--controller-manager", "/controller_manager"],
+    )
+
+    flipper_controller3 = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["flipper_controller3", "--controller-manager", "/controller_manager"],
+    )
+
+    flipper_controller4 = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["flipper_controller4", "--controller-manager", "/controller_manager"],
+    )
+    # position_controller = Node(
     #     package="controller_manager",
     #     executable="spawner",
-    #     arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+    #     arguments=["custom_position_controller", "--controller-manager", "/controller_manager"],
     # )
 
-    # robot_controller_spawner = Node(
-    #     package="controller_manager",
-    #     executable="spawner",
-    #     arguments=["joint_trajectory_controller", "--controller-manager", "/controller_manager"],
+    # position_controller_cpp = Node(
+    #     package="tracked_robot_2",
+    #     executable="position_controller",
+    #     parameters=[{"max_vel":max_vel}]
     # )
 
 #region Add Launch Descriptions
     ld = LaunchDescription()
+    # ld.add_action(max_vel_arg)
     ld.add_action(rsp)
     ld.add_action(gazebo)
     ld.add_action(spawn_entity)
-    # ld.add_action(joint_state_broadcaster_spawner)
-    # ld.add_action(robot_controller_spawner)
+
+    ld.add_action(joint_state_broadcaster_spawner)
+    ld.add_action(flipper_controller1)
+    ld.add_action(flipper_controller2)
+    ld.add_action(flipper_controller3)
+    ld.add_action(flipper_controller4)
+
+    # ld.add_action(position_controller)
+    # ld.add_action(position_controller_cpp)
 
 #endregion
 
