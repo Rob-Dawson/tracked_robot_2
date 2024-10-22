@@ -15,8 +15,26 @@ find_package(Boost REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(sensor_msgs)
 #Custom package for using ROS2 with tracked robots
 # find_package(gazebo_ros2_tracked_vehicle_interface)
+
+include_directories(
+  include
+)
+
+# add_executable(position_controller src/position_controller.cpp)
+# ament_target_dependencies(position_controller rclcpp sensor_msgs std_msgs )
+
+install(DIRECTORY include/
+  DESTINATION include/${PROJECT_NAME})
+
+# install(TARGETS
+#   position_controller
+#   DESTINATION lib/${PROJECT_NAME})
+
+
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -28,6 +46,17 @@ if(BUILD_TESTING)
 endif()
 
 ament_python_install_package(${PROJECT_NAME})
+
+
+
+
+
+
+
+# install(PROGRAMS  
+#   scripts/moveJoint.py  
+#   DESTINATION lib/${PROJECT_NAME} )
+
 
 
 # add_library(gazebo_track_interface SHARED src/gazebo_ros_tracked_vehicle_interface.cpp)
@@ -48,18 +77,25 @@ ament_python_install_package(${PROJECT_NAME})
 # install(TARGETS gazebo_track_interface
 #   DESTINATION share/${PROJECT_NAME})
 
-  # Install header files
-install(DIRECTORY include/
-  DESTINATION include/${PROJECT_NAME})
 
+
+  # Install header files
+
+
+
+
+ 
 #Install All other files  
 install(DIRECTORY scripts config worlds description description/meshes launch
   DESTINATION share/${PROJECT_NAME})
 
-# Ament package exports
-ament_export_include_directories(include)
-ament_export_libraries(robot_controller)
-ament_export_dependencies(rclcpp gazebo_dev)
+
+
+
+  # Ament package exports
+# ament_export_include_directories(include)
+# ament_export_libraries(robot_controller)
+# ament_export_dependencies(rclcpp gazebo_dev)
 
 ament_package()
 
